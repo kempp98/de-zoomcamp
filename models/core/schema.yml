@@ -22,3 +22,7 @@ models:
         tests:
             - not_null:
                 severity: error
+
+  - name: fact_fhv_trips
+    description: Fact table of FHV trips.
+    
