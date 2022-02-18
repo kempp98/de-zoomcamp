@@ -11,6 +11,7 @@ sources:
       tables:
         - name: green_tripdata_v2
         - name: yellow_tripdata_v2
+        - name: fhv_data_v2
          # freshness:
            # error_after: {count: 6, period: hour}
 
@@ -197,3 +198,20 @@ models:
             description: Total amount of all tolls paid in trip.
           - name: Total_amount 
             description: The total amount charged to passengers. Does not include cash tips.
+
+    - name: staging_fhv_data
+      description: >
+        FHV data for taxi trips in NYC.
+
+      columns:
+        - name: tripid
+          description: Primary key for this table. Generated with dispatching_base_num+pickup_datetime.
+          tests:
+            - unique:
+                severity: warn
+        - name: dispatching_base_num
+        - name: pickup_datetime
+        - name: dropoff_datetime
+        - name: pickup_location
+        - name: dropoff_location
+        - name: SR_Flag
